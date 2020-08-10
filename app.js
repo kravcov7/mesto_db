@@ -10,10 +10,10 @@ const cardsRouter = require('./routes/cards');
 
 const app = express();
 
-mongoose.connect('mongodb://localhost:27017/mydb', {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useFindAndModify: false
+mongoose.connect('mongodb://localhost:27017/mestodb', {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
 });
 
 app.use(express.static(path.join(__dirname, 'public')));
