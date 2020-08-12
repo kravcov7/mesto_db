@@ -10,6 +10,9 @@ const getUserId = (req, res) => {
   const { userId } = req.params;
 
   User.findById(userId)
+    .orFail(() => {
+      res.status(404).send({ message: 'Нет пользователя с таким id' });
+    })
     .then((user) => {
       if (!user) {
         res.status(404).send({ message: 'Нет пользователя с таким id' });
@@ -41,6 +44,9 @@ const updateUserInfo = (req, res) => {
       upsert: true,
     },
   )
+    .orFail(() => {
+      res.status(404).send({ message: 'Нет пользователя с таким id' });
+    })
     .then((user) => res.send({ data: user }))
     .catch((err) => res.status(400).send({ message: err.message }));
 };
