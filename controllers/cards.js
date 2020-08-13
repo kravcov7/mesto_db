@@ -24,11 +24,8 @@ const createCard = (req, res) => {
 
 const deleteCard = (req, res) => {
   Card.findById(req.params.id)
-    .orFail()
-    .then((card) => {
-      card.remove();
-      return res.send({ data: card });
-    })
+    .orFail().remove()
+    .then((card) => res.send({ data: card }))
     .catch((err) => {
       if (err.name === 'DocumentNotFoundError') {
         res.status(404);
