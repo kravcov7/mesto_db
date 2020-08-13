@@ -23,9 +23,7 @@ const createCard = (req, res) => {
 };
 
 const deleteCard = (req, res) => {
-  const { cardId } = req.params;
-
-  Card.findById(cardId)
+  Card.findById(req.params.id)
     .orFail(() => {
       res.status(404).send({ message: 'Такой карточки нет' });
     })
