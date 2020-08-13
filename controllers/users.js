@@ -10,7 +10,14 @@ const getUserId = (req, res) => {
   User.findById(req.params.id)
     .orFail()
     .then((user) => res.send({ data: user }))
-    .catch((err) => res.status(500).send({ message: err.message }));
+    .catch((err) => {
+      if (err.name === 'DocumentNotFoundError') {
+        res.status(404);
+      } else {
+        res.status(500);
+      }
+      res.send({ message: err.message });
+    });
 };
 
 const createUser = (req, res) => {
@@ -43,7 +50,14 @@ const updateUserInfo = (req, res) => {
   )
     .orFail()
     .then((user) => res.send({ data: user }))
-    .catch((err) => res.status(400).send({ message: err.message }));
+    .catch((err) => {
+      if (err.name === 'DocumentNotFoundError') {
+        res.status(404);
+      } else {
+        res.status(500);
+      }
+      res.send({ message: err.message });
+    });
 };
 
 const updateAvatar = (req, res) => {
@@ -57,7 +71,14 @@ const updateAvatar = (req, res) => {
   )
     .orFail()
     .then((user) => res.send({ data: user }))
-    .catch((err) => res.status(500).send({ message: err.message }));
+    .catch((err) => {
+      if (err.name === 'DocumentNotFoundError') {
+        res.status(404);
+      } else {
+        res.status(500);
+      }
+      res.send({ message: err.message });
+    });
 };
 
 module.exports = {

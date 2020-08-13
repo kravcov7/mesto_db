@@ -29,7 +29,14 @@ const deleteCard = (req, res) => {
       card.remove();
       return res.send({ data: card });
     })
-    .catch((err) => res.status(500).send({ message: err.message }));
+    .catch((err) => {
+      if (err.name === 'DocumentNotFoundError') {
+        res.status(404);
+      } else {
+        res.status(500);
+      }
+      res.send({ message: err.message });
+    });
 };
 
 const likeCard = (req, res) => {
@@ -40,7 +47,14 @@ const likeCard = (req, res) => {
   )
     .orFail()
     .then((card) => res.send({ data: card }))
-    .catch((err) => res.status(500).send({ message: err.message }));
+    .catch((err) => {
+      if (err.name === 'DocumentNotFoundError') {
+        res.status(404);
+      } else {
+        res.status(500);
+      }
+      res.send({ message: err.message });
+    });
 };
 
 const dislikeCard = (req, res) => {
@@ -51,7 +65,14 @@ const dislikeCard = (req, res) => {
   )
     .orFail()
     .then((card) => res.send({ data: card }))
-    .catch((err) => res.status(500).send({ message: err.message }));
+    .catch((err) => {
+      if (err.name === 'DocumentNotFoundError') {
+        res.status(404);
+      } else {
+        res.status(500);
+      }
+      res.send({ message: err.message });
+    });
 };
 
 module.exports = {
