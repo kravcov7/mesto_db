@@ -8,9 +8,7 @@ const getUsers = (req, res) => {
 
 const getUserId = (req, res) => {
   User.findById(req.params.id)
-    .orFail(() => {
-      res.status(404).send({ message: 'Нет пользователя с таким id' });
-    })
+    .orFail()
     .then((user) => res.send({ data: user }))
     .catch((err) => res.status(500).send({ message: err.message }));
 };
@@ -43,9 +41,7 @@ const updateUserInfo = (req, res) => {
       upsert: true,
     },
   )
-    .orFail(() => {
-      res.status(404).send({ message: 'Нет пользователя с таким id' });
-    })
+    .orFail()
     .then((user) => res.send({ data: user }))
     .catch((err) => res.status(400).send({ message: err.message }));
 };
@@ -59,9 +55,7 @@ const updateAvatar = (req, res) => {
     { avatar },
     { new: true, runValidators: true },
   )
-    .orFail(() => {
-      res.status(404).send({ message: 'Аватар не обновляется!' });
-    })
+    .orFail()
     .then((user) => res.send({ data: user }))
     .catch((err) => res.status(500).send({ message: err.message }));
 };

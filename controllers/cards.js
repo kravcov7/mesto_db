@@ -24,9 +24,7 @@ const createCard = (req, res) => {
 
 const deleteCard = (req, res) => {
   Card.findById(req.params.id)
-    .orFail(() => {
-      res.status(404).send({ message: 'Такой карточки нет' });
-    })
+    .orFail()
     .then((card) => {
       card.remove();
       return res.send({ data: card });
@@ -40,7 +38,7 @@ const likeCard = (req, res) => {
     { $addToSet: { likes: req.user._id } },
     { new: true },
   )
-    .orFail(() => res.status(404).send({ message: 'Карточка не найдена' }))
+    .orFail()
     .then((card) => res.send({ data: card }))
     .catch((err) => res.status(500).send({ message: err.message }));
 };
@@ -51,12 +49,8 @@ const dislikeCard = (req, res) => {
     { $pull: { likes: req.user._id } },
     { new: true },
   )
-    .then((card) => {
-      if (!card) {
-        res.status(404).send({ message: 'Невозможно удалить лайк' });
-      }
-      return res.send({ card });
-    })
+    .orFail()
+    .then((card) => res.send({ data: card }))
     .catch((err) => res.status(500).send({ message: err.message }));
 };
 
