@@ -31,9 +31,6 @@ const deleteCard = (req, res) => {
     })
     .then((card) => {
       card.remove();
-      if (!card) {
-        res.status(404).send({ message: 'Карточка не найдена!' });
-      }
       return res.send({ data: card });
     })
     .catch((err) => res.status(500).send({ message: err.message }));
@@ -45,12 +42,8 @@ const likeCard = (req, res) => {
     { $addToSet: { likes: req.user._id } },
     { new: true },
   )
-    .then((card) => {
-      if (!card) {
-        res.status(404).send({ message: 'Карточка не найдена' });
-      }
-      return res.send({ card });
-    })
+    .orFail(() => res.status(404).send({ message: 'Карточка не найдена' }))
+    .then((card) => res.send({ data: card }))
     .catch((err) => res.status(500).send({ message: err.message }));
 };
 
