@@ -50,9 +50,26 @@ const updateUserInfo = (req, res) => {
     .catch((err) => res.status(400).send({ message: err.message }));
 };
 
+const updateAvatar = (req, res) => {
+  const { avatar } = req.body;
+  const userId = req.user._id;
+
+  User.findByIdAndUpdate(
+    userId,
+    { avatar },
+    { new: true, runValidators: true },
+  )
+    .orFail(() => {
+      res.status(404).send({ message: 'Аватар не обновляется!' });
+    })
+    .then((user) => res.send({ data: user }))
+    .catch((err) => res.status(500).send({ message: err.message }));
+};
+
 module.exports = {
   getUsers,
   getUserId,
   createUser,
   updateUserInfo,
+  updateAvatar,
 };
