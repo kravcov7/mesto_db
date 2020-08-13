@@ -28,7 +28,14 @@ const createUser = (req, res) => {
 
   User.create({ name, about, avatar })
     .then((user) => res.send({ data: user }))
-    .catch((err) => res.status(500).send({ message: err.message }));
+    .catch((err) => {
+      if (err.name === 'ValidationError') {
+        res.status(400);
+      } else {
+        res.status(500);
+      }
+      res.send({ message: err.message });
+    });
 };
 
 const updateUserInfo = (req, res) => {

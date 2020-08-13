@@ -12,7 +12,14 @@ const createCard = (req, res) => {
 
   Card.create({ name, link, owner: ownerId })
     .then((card) => res.status(201).send({ data: card }))
-    .catch((err) => res.status(500).send({ message: err.message }));
+    .catch((err) => {
+      if (err.name === 'ValidationError') {
+        res.status(400);
+      } else {
+        res.status(500);
+      }
+      res.send({ message: err.message });
+    });
 };
 
 const deleteCard = (req, res) => {

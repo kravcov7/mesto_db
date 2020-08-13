@@ -1,0 +1,59 @@
+[33mcommit f07266fc42b852fc2fa9907839bca34caa8be6c7[m[33m ([m[1;36mHEAD -> [m[1;32mdevelop[m[33m, [m[1;31morigin/develop[m[33m)[m
+Author: Artem Kravtsov <dr.artem-k@yandex.com>
+Date:   Thu Aug 13 11:59:46 2020 +0400
+
+    добавил текст валидации ошибки
+
+[33mcommit c23c2da04f840bcd6d0a39d90283e8ca27f18711[m
+Author: Artem Kravtsov <dr.artem-k@yandex.com>
+Date:   Thu Aug 13 11:10:57 2020 +0400
+
+    изменил извлечения идентификатора в likeCard
+
+[33mcommit 5bb1f7bf49ec2c53026def7f0679b5ac53a44cb1[m
+Author: Artem Kravtsov <dr.artem-k@yandex.com>
+Date:   Thu Aug 13 10:57:02 2020 +0400
+
+    исправил передачу индефикатора польз в create-метод в cards
+
+[33mcommit 4cb9e445896b92c82eb91352ae573a5fa4d458ff[m
+Author: Artem Kravtsov <dr.artem-k@yandex.com>
+Date:   Wed Aug 12 12:12:44 2020 +0400
+
+    создал роуты и контроллеры для карточек. добавил метод orFail
+
+[33mcommit 7995905679fba861101f51519c87fa5c8357ae11[m
+Author: Artem Kravtsov <dr.artem-k@yandex.com>
+Date:   Tue Aug 11 17:14:53 2020 +0400
+
+    удалил data, public. подключил body-parser. создал тестого пользователя
+
+[33mcommit cc243cb42bd70ea0e14eb61f56a6fd38a8594914[m
+Author: Artem Kravtsov <dr.artem-k@yandex.com>
+Date:   Mon Aug 10 21:48:26 2020 +0400
+
+    создал контроллеры и роуты для пользователей
+
+[33mcommit e3b4ddd4dd8b14a2ebd2ee5122fb580feb9f2ad6[m
+Author: Artem Kravtsov <dr.artem-k@yandex.com>
+Date:   Mon Aug 10 21:16:57 2020 +0400
+
+    создал контроллеры и роуты для пользователей
+
+[33mcommit fb3c0bb87c7d5d29d360854c91b4613ebfdf0787[m
+Author: Artem Kravtsov <dr.artem-k@yandex.com>
+Date:   Mon Aug 10 18:36:39 2020 +0400
+
+    созданы схемы и модели, отредактировал package.json
+
+[33mcommit 8abb089119ee790dad95aea67753d2fa2b84e51b[m
+Author: Artem Kravtsov <dr.artem-k@yandex.com>
+Date:   Sun Aug 9 17:32:17 2020 +0400
+
+    изменил редми
+
+[33mcommit 18876d4416f2034c83e61b1b3434112adfb899d4[m[33m ([m[1;31morigin/master[m[33m, [m[1;32mmaster[m[33m)[m
+Author: Artem Kravtsov <dr.artem-k@yandex.com>
+Date:   Sun Aug 9 17:25:41 2020 +0400
+
+    first commit
