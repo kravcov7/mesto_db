@@ -15,7 +15,7 @@ Backend для сервиса [Mesto](https://kravcov7.github.io/sprint11/). У�
 
 ## Установка
 - Установите `Node.js`
-- Клонируйте репозиторий `git clone https://github.com/kravcov7/sprint12_backend.git`
+- Клонируйте репозиторий `git clone https://github.com/kravcov7/mesto_db.git`
 - Установить зависимости `npm i`
 - `npm run start` запускает сервер на `localhost:3000`
 - `npm run dev` запускает сервер на `localhost:3000` с хот релоудом
