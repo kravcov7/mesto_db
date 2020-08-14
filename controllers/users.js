@@ -12,7 +12,7 @@ const getUserId = (req, res) => {
     .then((user) => res.send({ data: user }))
     .catch((err) => {
       if (err.name === 'DocumentNotFoundError') {
-        res.status(404);
+        res.status(404).send({ message: 'Данный пользователь не найден' });
       } else {
         res.status(500);
       }
@@ -52,7 +52,7 @@ const updateUserInfo = (req, res) => {
     .then((user) => res.send({ data: user }))
     .catch((err) => {
       if (err.name === 'DocumentNotFoundError') {
-        res.status(404);
+        res.status(404).send({ message: 'Данные пользователя не обновлены' });
       } if (err.name === 'ValidationError') {
         res.status(400);
       } else {
@@ -75,7 +75,7 @@ const updateAvatar = (req, res) => {
     .then((user) => res.send({ data: user }))
     .catch((err) => {
       if (err.name === 'DocumentNotFoundError') {
-        res.status(404);
+        res.status(404).send({ message: 'Аватар не обновлен' });
       } if (err.name === 'ValidationError') {
         res.status(400);
       } else {

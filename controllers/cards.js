@@ -28,7 +28,7 @@ const deleteCard = (req, res) => {
     .then((card) => res.send({ data: card }))
     .catch((err) => {
       if (err.name === 'DocumentNotFoundError') {
-        res.status(404);
+        res.status(404).send({ message: 'Данной карточки не существует' });
       } else {
         res.status(500);
       }
@@ -46,7 +46,7 @@ const likeCard = (req, res) => {
     .then((card) => res.send({ data: card }))
     .catch((err) => {
       if (err.name === 'DocumentNotFoundError') {
-        res.status(404);
+        res.status(404).send({ message: 'Лайк не ставится' });
       } else {
         res.status(500);
       }
@@ -64,7 +64,7 @@ const dislikeCard = (req, res) => {
     .then((card) => res.send({ data: card }))
     .catch((err) => {
       if (err.name === 'DocumentNotFoundError') {
-        res.status(404);
+        res.status(404).send({ message: 'Действие невозможно' });
       } else {
         res.status(500);
       }
