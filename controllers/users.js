@@ -53,6 +53,8 @@ const updateUserInfo = (req, res) => {
     .catch((err) => {
       if (err.name === 'DocumentNotFoundError') {
         res.status(404);
+      } if (err.name === 'ValidationError') {
+        res.status(400);
       } else {
         res.status(500);
       }
@@ -74,6 +76,8 @@ const updateAvatar = (req, res) => {
     .catch((err) => {
       if (err.name === 'DocumentNotFoundError') {
         res.status(404);
+      } if (err.name === 'ValidationError') {
+        res.status(400);
       } else {
         res.status(500);
       }
