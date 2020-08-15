@@ -15,5 +15,6 @@ module.exports = {
   rules: {
     // eslint-disable-next-line quotes
     "no-underscore-dangle": ["error", { "allow": ["_id"] }],
+    'linebreak-style': ['error', 'windows'],
   },
 };
